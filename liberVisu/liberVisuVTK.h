@@ -1,3 +1,6 @@
+#ifndef LIBERVISUVTK_H
+#define LIBERVISUVTK_H
+
 #include <iostream>
 #include <string>
 
@@ -21,30 +24,27 @@ using namespace std;
 
 class c_VTK{
 
-public:
-    const char* _fileName;
-    int _num_nodes;
-    int _num_cells;
-    int _node_per_cell;
+protected:
+    string _fileName;
+    int _nodeNum;
+    int _cellNum;
+    int _nodePerCell;
     int _varSize;
     char **_varName;
     float *_x;
     float *_y;
     float *_z;
+    int **_cellConnectivity;
+    float **_varMatrix;
+// Needed by VTK
     vtkSmartPointer<vtkPoints> _points;
     vtkSmartPointer<vtkVoxel> *_voxel; 
     vtkSmartPointer<vtkCellArray> _cellArray;
     vtkSmartPointer<vtkDoubleArray> *_cellCenterData;
     vtkSmartPointer<vtkUnstructuredGrid> _unstructuredGrid;
     vtkSmartPointer<vtkXMLUnstructuredGridWriter> _writer;
-    int **_cellConnectivity;
-
-    float **_varMatrix;
-
     
-public:
-    c_VTK(const char* fileName, int num_nodes, float *x, float *y, float *z, int num_cells, int node_per_cell, int **cellConnectivity, char ** varName, int varSize, float **varMatrix);
-    ~c_VTK();
+protected:
     void createPoints();
     void createCells();
     void createCellCenterData();
@@ -52,5 +52,21 @@ public:
     void createGrid();
     void writeFile();
     void fileCreation();
-    const char* getIndividualFileName();
+    string getIndividualFileName();
+
+public:
+    c_VTK(string fileName, int nodeNum, float *x, float *y, float *z, int cellNum, int nodePerCell, int **cellConnectivity, char ** varName, int varSize, float **varMatrix);
+    ~c_VTK();
+    void doAll();
+
 };
+
+//void liberVisuVTK(string fileName, int nodeNum, float *x, float *y, float *z, int cellNum, int nodePerCell, int **cellConMatrix, char** varName, int varSize, float **varMatrix){
+//
+//    c_VTK *VTK = new c_VTK(fileName, nodeNum, x, y, z, cellNum, nodePerCell, cellConMatrix, varName, varSize, varMatrix);
+//    VTK->doAll();
+//    delete VTK;
+//
+//}
+
+#endif

@@ -1,24 +1,26 @@
-#include "liberVTK.h"
+#ifndef LIBERVISUVTK_CPP
+#define LIBERVISUVTK_CPP
 
-c_VTK::c_VTK(const char* fileName, int num_nodes, float *x, float *y, float *z, int num_cells, int node_per_cell, int **cellConnectivity,char ** varName, int varSize, float **varMatrix){
+#include "liberVisuVTK.h"
 
- 
+c_VTK::c_VTK(string fileName, int nodeNum, float *x, float *y, float *z, int cellNum, int nodePerCell, int **cellConnectivity, char ** varName, int varSize, float **varMatrix){
+
     _fileName= fileName;
 //  Related to Points
-    _num_nodes = num_nodes;
-    _x = new float[_num_nodes];
-    _y = new float[_num_nodes];
-    _z = new float[_num_nodes];
+    _nodeNum = nodeNum;
+    _x = new float[_nodeNum];
+    _y = new float[_nodeNum];
+    _z = new float[_nodeNum];
     _x = x;
     _y = y;
     _z = z;
 //  Related to Cells
-    _num_cells = num_cells;
-    _node_per_cell = node_per_cell;
+    _cellNum = cellNum;
+    _nodePerCell = nodePerCell;
 
-    _cellConnectivity = new int *[_num_cells];
-    for(int i =0; i<_num_cells; i++){
-     _cellConnectivity[i] = new int [_node_per_cell];
+    _cellConnectivity = new int *[_cellNum];
+    for(int i =0; i<_cellNum; i++){
+     _cellConnectivity[i] = new int [_nodePerCell];
     }
     _cellConnectivity = cellConnectivity;
 //  Related to CellCenterData
@@ -29,30 +31,28 @@ c_VTK::c_VTK(const char* fileName, int num_nodes, float *x, float *y, float *z, 
     }
     _varName = varName;
 
-    _cellCenterData = new vtkSmartPointer<vtkDoubleArray>[_varSize];
-
 //  Related to Variable Matrix
      _varMatrix = new float*[_varSize];
      for(int i=0; i<_varSize;i++){
-       _varMatrix[i] = new float [_num_cells];
+       _varMatrix[i] = new float [_cellNum];
      }
      _varMatrix = varMatrix;
-
 
 }
 
 c_VTK::~c_VTK(){
+
   
-    delete [] _x;
-    _x = NULL;
+//    delete [] _x;
+//    _x = NULL;
+//
+//    delete [] _y;
+//    _y = NULL;
+//
+//    delete [] _z;
+//    _z = NULL;
 
-    delete [] _y;
-    _y = NULL;
-
-    delete [] _z;
-    _z = NULL;
-
-    for(int i=0; i<_num_cells; i++){
+    for(int i=0; i<_cellNum; i++){
         delete []  _cellConnectivity[i];
         _cellConnectivity[i] = NULL;
     }
@@ -69,13 +69,12 @@ c_VTK::~c_VTK(){
     delete [] _varMatrix;
     _varMatrix = NULL;
 
-
 }
 
 void c_VTK::createPoints(){
 
     _points = vtkSmartPointer<vtkPoints>::New();
-    for(int i=0; i<_num_nodes; i++){
+    for(int i=0; i<_nodeNum; i++){
        _points->InsertNextPoint(_x[i], _y[i], _z[i]);
     }
 }
@@ -83,25 +82,27 @@ void c_VTK::createPoints(){
 void c_VTK::createCells(){
 
 //  Allocate Cells
-    _voxel = new vtkSmartPointer<vtkVoxel>[_num_cells];
-    for(int i=0; i<_num_cells; i++){
+    _voxel = new vtkSmartPointer<vtkVoxel>[_cellNum];
+    for(int i=0; i<_cellNum; i++){
     _voxel[i] = vtkSmartPointer<vtkVoxel>::New();
     }
 
 
-    for(int i=0; i<_num_cells; i++){
-      for(int j=0; j<_node_per_cell; j++){
+    for(int i=0; i<_cellNum; i++){
+      for(int j=0; j<_nodePerCell; j++){
         _voxel[i]->GetPointIds()->SetId(j, _cellConnectivity[i][j]);
       }
     }
 
     _cellArray = vtkSmartPointer<vtkCellArray>::New();
-    for(int i=0; i<_num_cells; i++){
+    for(int i=0; i<_cellNum; i++){
       _cellArray->InsertNextCell(_voxel[i]);
     }
 
 }
 void c_VTK::createCellCenterData(){
+
+    _cellCenterData = new vtkSmartPointer<vtkDoubleArray>[_varSize];
 
     for(int i=0; i<_varSize; i++){
       _cellCenterData[i] = vtkSmartPointer<vtkDoubleArray>::New();
@@ -111,8 +112,8 @@ void c_VTK::createCellCenterData(){
       _cellCenterData[i]->SetName(_varName[i]);
 //1 for being scalar, should be 3 for vector quantites
       _cellCenterData[i]->SetNumberOfComponents(1);
-      _cellCenterData[i]->SetNumberOfValues(_num_cells);
-      for(int j=0; j<_num_cells; j++){
+      _cellCenterData[i]->SetNumberOfValues(_cellNum);
+      for(int j=0; j<_cellNum; j++){
           _cellCenterData[i]->SetValue(j,_varMatrix[i][j]);
       }
 
@@ -134,29 +135,26 @@ void c_VTK::createGrid(){
 
 }
 
-const char* c_VTK::getIndividualFileName(){
+string c_VTK::getIndividualFileName(){
 
-    string f1, f2, ff;
-    const char *c_ff;
+    string f1, f2, f3, f4, ff;
 
     f1 = _fileName;
-    f2= ".vtu";
+    f2 = "_";
+    f3 = to_string(_mpi_rank);
+    f4 = ".vtu";
 
-    ff = f1 + f2 ;
-    c_ff = ff.c_str();
-    return c_ff;
+    ff = f1 + f2 + f3 + f4;
+    return ff;
 
 }
-
-
 
 void c_VTK::writeFile(){
 
     _writer = vtkSmartPointer<vtkXMLUnstructuredGridWriter>::New();
-    
 
-    const char *tempfileName = getIndividualFileName();
-    _writer->SetFileName(tempfileName);
+    string fileName = getIndividualFileName();
+    _writer->SetFileName(fileName.c_str());
 
 #if VTK_MAJOR_VERSION <= 5
   _writer->SetInput(_unstructuredGrid);
@@ -167,6 +165,11 @@ void c_VTK::writeFile(){
 
 }
 
+void c_VTK::doAll(){
+
+    fileCreation();
+
+}
 
 void c_VTK::fileCreation(){
 
@@ -175,4 +178,7 @@ void c_VTK::fileCreation(){
     createCellCenterData();
     createGrid();
     writeFile();
+
 }
+
+#endif

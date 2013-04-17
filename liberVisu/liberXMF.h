@@ -8,10 +8,10 @@ using namespace std;
 
 class c_XMF{
 public:
-    const char* _fileName;
-    char *_gridName;// = NULL; 
-    char *_gridType;// = NULL;
-    char *_topoType;// = NULL;
+    string _fileName;
+    string _gridName;// = NULL; 
+    string _gridType;// = NULL;
+    string _topoType;// = NULL;
 
     int _nodeNum;
     int _cellNum;
@@ -29,7 +29,7 @@ public:
 
 //    c_HDF *HDF;
 public:
-    c_XMF(const char* fileName,  char *_gridName, char *_gridType, char *_topoType, int num_nodes, float *x, float *y, float *z, int num_cells, int node_per_cell, int **cellConnectivity, char ** varName, char **varType,  int *varLength, int varSize, float **varMatrix);
+    c_XMF(string fileName, string _gridName, string _gridType, string _topoType, int num_nodes, float *x, float *y, float *z, int num_cells, int node_per_cell, int **cellConnectivity, char ** varName, char **varType,  int *varLength, int varSize, float **varMatrix);
 
     void fileCreation();
 

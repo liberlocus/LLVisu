@@ -1,0 +1,9 @@
+*~
+*.swp
+*build*
+*old*
+*.o
+*.x
+*latex
+*html
+*.a

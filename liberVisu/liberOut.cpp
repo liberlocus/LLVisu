@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void liberOut(const char* fileName, char* gridName, char* gridType, char* topoName,int cellNum, int nodePerCell, int nodeNum, int varSize, char** varName, char** varType, float** varMatrix, float *x, float *y, float *z, int** cellConMatrix){
+void liberOut(string fileName, string gridName, string gridType, string topoName,int cellNum, int nodePerCell, int nodeNum, int varSize, char** varName, char** varType, float** varMatrix, float *x, float *y, float *z, int** cellConMatrix){
 
 Output *output1=NULL;
 output1 = new Output();
@@ -23,7 +23,7 @@ Output::~Output(){
 
 }
 
-void Output::setNames(const char *fileName, char *gridName, char *gridType, char *topoType){
+void Output::setNames(string fileName, string gridName, string gridType, string topoType){
 
   _fileName=fileName;
   _gridName=gridName;

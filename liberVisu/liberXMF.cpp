@@ -1,6 +1,6 @@
 #include "liberXMF.h"
 
-c_XMF::c_XMF(const char* fileName, char *gridName, char *gridType, char *topoType, int nodeNum, float *x, float *y, float *z, int cellNum, int nodePerCell, int **cellConnectivity, char ** varName, char **varType,  int *varLength, int varSize, float **varMatrix){
+c_XMF::c_XMF(string fileName, string gridName, string gridType, string topoType, int nodeNum, float *x, float *y, float *z, int cellNum, int nodePerCell, int **cellConnectivity, char ** varName, char **varType,  int *varLength, int varSize, float **varMatrix){
 
     _fileName= fileName;
     _gridName=gridName;
@@ -43,7 +43,7 @@ c_XMF::c_XMF(const char* fileName, char *gridName, char *gridType, char *topoTyp
 
 void c_XMF::writeXMF(){
 
-   char* extension=".xmf";
+   string extension=".xmf";
    string fileFullName=string(_fileName)+string(extension);
    ofstream outmyfile;
    
