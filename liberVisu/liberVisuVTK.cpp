@@ -135,16 +135,14 @@ void c_VTK::createGrid(){
 
 }
 
-string c_VTK::getIndividualFileName(){
+string c_VTK::getFileName(){
 
-    string f1, f2, f3, f4, ff;
+    string f1, f2, ff;
 
     f1 = _fileName;
-    f2 = "_";
-    f3 = to_string(_mpi_rank);
-    f4 = ".vtu";
+    f2 = ".vtu";
 
-    ff = f1 + f2 + f3 + f4;
+    ff = f1 + f2;
     return ff;
 
 }
@@ -153,7 +151,7 @@ void c_VTK::writeFile(){
 
     _writer = vtkSmartPointer<vtkXMLUnstructuredGridWriter>::New();
 
-    string fileName = getIndividualFileName();
+    string fileName = getFileName();
     _writer->SetFileName(fileName.c_str());
 
 #if VTK_MAJOR_VERSION <= 5

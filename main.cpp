@@ -99,6 +99,7 @@ int main(int argc, char **argv){
   
 //  liberOut(fileName,gridName, gridType,topoType, cellNum, nodePerCell,nodeNum,varSize, varName, varType, varMatrix,passed_x, passed_y, passed_z,cells);
   liberVisuVTK(fileName, nodeNum, passed_x, passed_y, passed_z, cellNum, nodePerCell, cells, varName, varSize, varMatrix);
+  liberVisuXMF(fileName, gridName, gridType, topoType, nodeNum, passed_x, passed_y, passed_z, cellNum, nodePerCell, cells, varName, varType, varSize, varMatrix);
 
 //  writeParallelHDF5();
 //delete allocated arrays

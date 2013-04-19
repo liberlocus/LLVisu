@@ -52,7 +52,7 @@ protected:
     void createGrid();
     void writeFile();
     void fileCreation();
-    string getIndividualFileName();
+    string getFileName();
 
 public:
     c_VTK(string fileName, int nodeNum, float *x, float *y, float *z, int cellNum, int nodePerCell, int **cellConnectivity, char ** varName, int varSize, float **varMatrix);

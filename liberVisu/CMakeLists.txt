@@ -8,7 +8,7 @@ include_directories("${CMAKE_SOURCE_DIR}")
 
 add_definitions(-Wno-deprecated)
 
-add_library(liberVisu liberVisuVTK.h liberVisuVTK.cpp liberVisuOut.h)
+add_library(liberVisu liberVisuXMF.h liberVisuXMF.cpp liberVisuVTK.h liberVisuVTK.cpp liberVisuOut.h)
 #add_library(liber liberVTK.h liberVTK.cpp liberXMF.h liberXMF.cpp liberOut.h liberOut.cpp)
 
 target_link_libraries(liberVisu ${VTK_LIBRARIES})
