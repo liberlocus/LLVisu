@@ -10,6 +10,9 @@
 #include "liberVisuXMF.h"
 
 using namespace std;
+/*!
+LiberLocus Visualization main function definitions
+*/
 
 void liberVisuVTK(string fileName, int nodeNum, float *x, float *y, float *z, int cellNum, int nodePerCell, int **cellConMatrix, char** varName, int varSize, float **varMatrix){
 

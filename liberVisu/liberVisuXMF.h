@@ -11,6 +11,7 @@
 using namespace std;
 
 class c_XMF{
+/*! Class definition for serial XMF format**/
 
 protected:
     string _fileName;

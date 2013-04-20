@@ -23,6 +23,7 @@
 using namespace std;
 
 class c_VTK{
+/*! Class definition for serial VTK format**/
 
 protected:
     string _fileName;
