@@ -2,17 +2,17 @@ cmake_minimum_required(VERSION 2.6.4)
 project(liberVisu)
 find_package(VTK REQUIRED)
 include_directories("${VTK_INCLUDE_DIRS}")
-#find_package(HDF5 REQUIRED)
-#include_directories("${HDF5_INCLUDE_DIRS}")
+find_package(HDF5 1.8.6 REQUIRED)
+include_directories("${HDF5_INCLUDE_DIRS}")
+
 include_directories("${CMAKE_SOURCE_DIR}")
 
 add_definitions(-Wno-deprecated)
 
-add_library(liberVisu liberVisuXMF.h liberVisuXMF.cpp liberVisuVTK.h liberVisuVTK.cpp liberVisuOut.h)
-#add_library(liber liberVTK.h liberVTK.cpp liberXMF.h liberXMF.cpp liberOut.h liberOut.cpp)
+add_library(liberVisu liberVisuHDF.h liberVisuHDF.cpp liberVisuXMF.h liberVisuXMF.cpp liberVisuVTK.h liberVisuVTK.cpp liberVisu.h)
 
 target_link_libraries(liberVisu ${VTK_LIBRARIES})
-#target_link_libraries(liber ${HDF5_LIBRARIES})
+target_link_libraries(liberVisu ${HDF5_LIBRARIES})
 
 ######### TESTING ####################
 

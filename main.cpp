@@ -1,4 +1,4 @@
-#include "liberVisuOut.h"
+#include "liberVisu.h"
 
 int main(int argc, char **argv){
 
@@ -72,6 +72,7 @@ int main(int argc, char **argv){
 
   char* varName[]={"ATemperature", "APressure"};
   char* varType[]={"Cell", "Cell"};
+  int varLength[] = {cellNum, cellNum};
 
   int **cells=NULL;
   cells = new int *[cellNum];
@@ -99,7 +100,7 @@ int main(int argc, char **argv){
   
 //  liberOut(fileName,gridName, gridType,topoType, cellNum, nodePerCell,nodeNum,varSize, varName, varType, varMatrix,passed_x, passed_y, passed_z,cells);
   liberVisuVTK(fileName, nodeNum, passed_x, passed_y, passed_z, cellNum, nodePerCell, cells, varName, varSize, varMatrix);
-  liberVisuXMF(fileName, gridName, gridType, topoType, nodeNum, passed_x, passed_y, passed_z, cellNum, nodePerCell, cells, varName, varType, varSize, varMatrix);
+  liberVisuXMF(fileName, gridName, gridType, topoType, nodeNum, passed_x, passed_y, passed_z, cellNum, nodePerCell, cells, varName, varType, varLength, varSize, varMatrix);
 
 //  writeParallelHDF5();
 //delete allocated arrays

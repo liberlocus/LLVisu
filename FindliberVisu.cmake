@@ -1,4 +1,4 @@
-find_path(liberVisu_INCLUDE_DIRS liberVisuOut.h /gpfs/home/bxk267/work/LL_Research/Libraries/LLVisu/liberVisu "$ENV{NAMER_ROOT}")
+find_path(liberVisu_INCLUDE_DIRS liberVisu.h /gpfs/home/bxk267/work/LL_Research/Libraries/LLVisu/liberVisu "$ENV{NAMER_ROOT}")
 
 find_library(liberVisu_LIBRARIES liberVisu /gpfs/home/bxk267/work/LL_Research/Libraries/LLVisu/liberVisu "$ENV{NAMER_ROOT}")
 
