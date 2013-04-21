@@ -14,25 +14,25 @@ class c_XMF{
 /*! Class definition for serial XMF format**/
 
 protected:
-    string _fileName;
-    string _gridName;
-    string _gridType;
-    string _topoType;
+    string _fileName; /*! absolute path to filename */
+    string _gridName; /*! grid name decribed in XDMF documentation */
+    string _gridType; /*! grid type decribed in XDMF documentation */
+    string _topoType; /*! topology type decribed in XDMF documentation */
 
-    int _nodeNum;
-    int _cellNum;
-    int _nodePerCell;
+    int _nodeNum;     /*! number of nodes in the mesh */ 
+    int _cellNum;     /*! number of cells in the mesh */
+    int _nodePerCell; /*! number of nodes per cell in the mesh */
     int _varSize;
     char **_varName, **_temp_varName;
     char **_varType, **_temp_varType;// = NULL;
     int *_varLength, *_temp_varLength;
-    float *_x;
-    float *_y;
-    float *_z;
+    float *_x;        /*! pointer to the array that holds the x position of the nodes */
+    float *_y;        /*! pointer to the array that holds the y position of the nodes */
+    float *_z;        /*! pointer to the array that holds the z position of the nodes */
     int **_cellConnectivity;
     float **_varMatrix;
 //  Related to HDF
-    c_HDF *HDF;
+    c_HDF *HDF;       /*! pointer to HDF object */
     
 protected:
 
@@ -46,13 +46,5 @@ public:
     void doAll(); //filecreation
 
 };
-
-//void liberVisuVTK(string fileName, int nodeNum, float *x, float *y, float *z, int cellNum, int nodePerCell, int **cellConMatrix, char** varName, int varSize, float **varMatrix){
-//
-//    c_VTK *VTK = new c_VTK(fileName, nodeNum, x, y, z, cellNum, nodePerCell, cellConMatrix, varName, varSize, varMatrix);
-//    VTK->doAll();
-//    delete VTK;
-//
-//}
 
 #endif

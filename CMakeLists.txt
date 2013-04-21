@@ -26,9 +26,10 @@ endif (VTK_FOUND)
 find_package(HDF5 1.8.6 REQUIRED)
 if (HDF5_FOUND)
   include_directories(${HDF5_INCLUDE_DIRS})
-  target_link_libraries (maestro.x ${HDF5_LIBRARIES})
+  target_link_libraries (maestro.x /usr/global/hdf5/1.8.6/lib/libhdf5_cpp.so ${HDF5_LIBRARIES})
 endif (HDF5_FOUND)
-############## TESTING ###############
+
+############# TESTING ###############
 
 ENABLE_TESTING()
 include(CTest)
