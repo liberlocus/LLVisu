@@ -4,6 +4,7 @@
 *old*
 *.o
 *.x
-*latex
-*html
-*.a
+*html*
+*latex*
+*.ps
+*.pdf

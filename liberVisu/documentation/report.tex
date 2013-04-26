@@ -1,0 +1,171 @@
+\documentclass{article}
+%\setlength{\textwidth}{15cm}
+
+%\documentclass[submit]{aiaa-tc}% insert '[draft]' option to show overfull boxes
+
+\usepackage[margin=1.3in]{geometry}
+ \usepackage{wrapfig}% embedding figures/tables in text (i.e., Galileo style)
+ \usepackage{threeparttable}% tables with footnotes
+ \usepackage{dcolumn}% decimal-aligned tabular math columns
+  \newcolumntype{d}{D{.}{.}{-1}}
+ \usepackage{nomencl}% automatic nomenclature generation via makeindex
+  \makeglossary
+ \usepackage{subfigure}% subcaptions for subfigures
+ \usepackage{subfigmat}% matrices of similar subfigures, aka small mulitples
+ \usepackage{fancyvrb}% extended verbatim environments
+  \fvset{fontsize=\footnotesize,xleftmargin=2em}
+ \usepackage{lettrine}% dropped capital at beginning of paragraph
+ \usepackage[dvips]{dropping}% alternative dropped capital package
+ \usepackage{hyperref}% embedding hyperlinks [must be loaded after dropping]
+ \usepackage{amsmath}
+ \usepackage{color}
+ \usepackage{setspace}
+ \usepackage{epsf}
+ \usepackage{epsfig}
+% \renewcommand{\baselinestretch}{1.25}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+
+% Upper part of the page. The '~' is needed because \\
+% only works if a paragraph has started.
+\includegraphics[width=0.25\textwidth]{figures/LLlogo.eps}~\\[1cm]
+
+\textsc{\LARGE LiberLocus}\\[1.5cm]
+
+% Title
+{ \huge \bfseries LLVisu Library}\\[0.4cm]
+
+\textsc{\Large LiberLocus scientific output generation library for serial software}\\[0.5cm]
+
+\textsc{Version 1.4}\\[3.5cm]
+
+\textsc{\Large LiberLocus Team}\\[1.5cm]
+
+\textsc{\Large Earth}\\[0.5cm]
+
+\vfill
+
+% Bottom of the page
+{\large \today}
+
+\end{center}
+\end{titlepage}
+
+%\maketitle
+%\section{Introduction}
+
+\section{Introduction}
+
+This is a documentation about the LiberLocus LLVisu library.
+
+\newpage
+
+%\begingroup
+%    \fontsize{15pt}{10pt}\selectfont
+%    \begin{verbatim}  
+        % how to set font size here to 10 px ?  
+
+\noindent {\large void {\bf liberVisuVTK}(\newline \par {\it string}  fileName, {\it int}  nodeNum, {\it float}  *pos\_x, {\it float}  *pos\_y, {\it float}  *pos\_z, {\it int}  cellNum, {\it int}  nodePerCell, {\it int}  **cells, {\it char}  **varName, {\it int}  **varSize, {\it float}  **varMatrix \newline) }
+\bigskip
+
+\noindent {\large {\bf Description}}
+        \par This function creates a vtk type output file in vtu format.
+\bigskip
+        
+\noindent {\large {\bf Parameters}}
+        \par Below are the definitions of the parameters in the function.
+\medskip
+
+        {\bf fileName}  \par the absolute path to the output directory + filename
+\medskip
+        
+        {\bf nodeNum} \par number of nodes present in the mesh
+\medskip
+        
+        {\bf pos\_x} \par pointer to the array that stores the x position of the nodes
+\medskip
+        
+        {\bf pos\_y} \par pointer to the array that stores the y position of the nodes
+\medskip
+        
+        {\bf pos\_z} \par pointer to the array that stores the z position of the nodes
+\medskip
+        
+        {\bf cellNum} \par number of cells present in the mesh
+\medskip
+        
+        {\bf nodePerCell} \par number of nodes per cells 
+\medskip
+        
+        {\bf cells} \par pointer to the two dimensional array that stores the cell connectivity
+\medskip
+        
+        {\bf varName} \par pointer to the array that stores the variable names
+\medskip
+        
+        {\bf varSize} \par number of variables that are passed 
+\medskip
+        
+        {\bf varMatrix} \par pointer to the two dimensional array that stores the variable value arrays(cell or node based) 
+
+\newpage
+
+\noindent {\large void {\bf liberVisuXMF}(\newline \par {\it string}  fileName, {\it string}  gridName, {\it string}  topoType, {\it int}  nodeNum, {\it float}  *pos\_x, {\it float}  *pos\_y, {\it float}  *pos\_z, {\it int}  cellNum, {\it int}  nodePerCell, {\it int}  **cells, {\it char}  **varName, {\it char}  **varType, {\it int}  *varLength, {\it int}  varSize, {\it float}  **varMatrix \newline) }
+\bigskip
+
+\noindent {\large {\bf Description}}
+        \par This function creates a xdmf type output file in xmf format using hdf5.
+\bigskip
+        
+\noindent {\large {\bf Parameters}}
+        \par Below are the definitions of the parameters in the function.
+\medskip
+
+        {\bf fileName}  \par the absolute path to the output directory + filename
+\medskip
+        
+        {\bf nodeNum} \par number of nodes present in the mesh
+\medskip
+        
+        {\bf pos\_x} \par pointer to the array that stores the x position of the nodes
+\medskip
+        
+        {\bf pos\_y} \par pointer to the array that stores the y position of the nodes
+\medskip
+        
+        {\bf pos\_z} \par pointer to the array that stores the z position of the nodes
+\medskip
+        
+        {\bf cellNum} \par number of cells present in the mesh
+\medskip
+        
+        {\bf nodePerCell} \par number of nodes per cells 
+\medskip
+        
+        {\bf cells} \par pointer to the two dimensional array that stores the cell connectivity
+\medskip
+        
+        {\bf varName} \par pointer to the array that stores the variable names
+\medskip
+        
+        {\bf varSize} \par number of variables that are passed 
+\medskip
+        
+        {\bf varMatrix} \par pointer to the two dimensional array that stores the variable value arrays(cell or node based) 
+
+        
+
+
+%  \begin{thebibliography}{1}
+%
+%  \bibitem{wiki1} Sorting Algorithm Wikipedia, Page {\em http://en.wikipedia.org/wiki/Sorting\_algorithm}
+%  \bibitem{wiki2} Mergesort Wikipedia Page, {\em http://en.wikipedia.org/wiki/Merge\_sort}
+%  \bibitem{main} Atanas Radenski "{\em Shared Memory, Message Passing, and Hybrid Merge Sorts for Standalone and Clustered SMPs}"  International Conference on Parallel and Distributed Processing Techniques and Applications, 2011 pp. 367-373.
+%  \bibitem{sec} Jaeyoung Park, Kyong-Gun Lee and Jong Tae Kim "{\em Parallel Mergesort Implementation using OpenMP}" Proceedings of The 2011 World Congress in Computer Science, Computer Engineering and Applied Computing. "http://world-comp.org/p2011/PDP8400.pdf"
+%
+%  \end{thebibliography}
+
+\end{document}

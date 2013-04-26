@@ -74,13 +74,24 @@ int main(int argc, char **argv){
   char* varType[]={"Cell", "Cell"};
   int varLength[] = {cellNum, cellNum};
 
+  int **cells_vtk=NULL;
+  cells_vtk = new int *[cellNum];
+  for(int i =0; i<cellNum; i++){
+    cells_vtk[i] = new int [nodePerCell];
+  }
+  int dummy_cells_vtk[2][8]={{0,1,2,3,4,5,6,7     },
+                         {8,9,10,11,12,13,14,15    }};
+  for(int i=0;i<cellNum;i++){
+    for(int j=0;j<nodePerCell;j++){
+      cells_vtk[i][j]=dummy_cells_vtk[i][j];
+    }
+  };
+
   int **cells=NULL;
   cells = new int *[cellNum];
   for(int i =0; i<cellNum; i++){
     cells[i] = new int [nodePerCell];
   }
-//  int dummy_cells[2][8]={{0,1,2,3,4,5,6,7     },
-//                         {8,9,10,11,12,13,14,15    }};
   int dummy_cells[2][8]={{0,1,3,2,4,5,7,6     },
                          {8,9,11,10,12,13,15,14    }};
 
@@ -99,7 +110,7 @@ int main(int argc, char **argv){
   /*define cell distribution among processors.*/
   
 //  liberOut(fileName,gridName, gridType,topoType, cellNum, nodePerCell,nodeNum,varSize, varName, varType, varMatrix,passed_x, passed_y, passed_z,cells);
-  liberVisuVTK(fileName, nodeNum, passed_x, passed_y, passed_z, cellNum, nodePerCell, cells, varName, varSize, varMatrix);
+  liberVisuVTK(fileName, nodeNum, passed_x, passed_y, passed_z, cellNum, nodePerCell, cells_vtk, varName, varSize, varMatrix);
   liberVisuXMF(fileName, gridName, gridType, topoType, nodeNum, passed_x, passed_y, passed_z, cellNum, nodePerCell, cells, varName, varType, varLength, varSize, varMatrix);
 
 //  writeParallelHDF5();
@@ -113,5 +124,11 @@ int main(int argc, char **argv){
   }
   delete [] cells;
   cells=NULL;
+  for (int i=0;i<cellNum;i++){
+    delete [] cells_vtk[i];
+    cells_vtk[i]=NULL;
+  }
+  delete [] cells_vtk;
+  cells_vtk=NULL;
 
 }
