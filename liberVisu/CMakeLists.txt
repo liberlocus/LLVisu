@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 2.6.4)
 project(liberVisu)
 
-add_library(liberVisu liberVisuHDF.h liberVisuHDF.cpp liberVisuXMF.h liberVisuXMF.cpp liberVisuVTK.h liberVisuVTK.cpp liberVisu.h)
+#add_library(liberVisu liberVisuHDF.h liberVisuHDF.cpp liberVisuXMF.h liberVisuXMF.cpp liberVisuVTK.h liberVisuVTK.cpp liberVisu.h)
+add_library(liberVisu liberVisuHDF.h liberVisuHDF.cpp liberVisuXMF.h
+liberVisuXMF.cpp liberVisuVTK.h liberVisuVTK.cpp liberVisu.h liberVisu.cpp)
 
 find_package(VTK REQUIRED)
 if (VTK_FOUND)

@@ -43,14 +43,14 @@ c_VTK::c_VTK(string fileName, int nodeNum, float *x, float *y, float *z, int cel
 c_VTK::~c_VTK(){
 
   
-//    delete [] _x;
-//    _x = NULL;
-//
-//    delete [] _y;
-//    _y = NULL;
-//
-//    delete [] _z;
-//    _z = NULL;
+    delete [] _x;
+    _x = NULL;
+
+    delete [] _y;
+    _y = NULL;
+
+    delete [] _z;
+    _z = NULL;
 
     for(int i=0; i<_cellNum; i++){
         delete []  _cellConnectivity[i];
