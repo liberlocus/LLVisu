@@ -1,7 +1,7 @@
-This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=latex 2012.10.30)  26 APR 2013 00:43
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=latex 2012.10.30)  27 APR 2013 23:27
 entering extended mode
-**report.tex
-(./report.tex
+**LLVisu.tex
+(./LLVisu.tex
 LaTeX2e <2003/12/01>
 Babel <v3.8d> and hyphenation patterns for american, french, german, ngerman, b
 ahasa, basque, bulgarian, catalan, croatian, czech, danish, dutch, esperanto, e
@@ -72,10 +72,10 @@ Package: nomencl 2000/12/03 v3.1a Nomenclature package (BS)
 \nomitemsep=\skip45
 )
 \@glossaryfile=\write3
-\openout3 = `report.glo'.
+\openout3 = `LLVisu.glo'.
 
 
-Writing glossary file report.glo
+Writing glossary file LLVisu.glo
 (/usr/share/texmf/tex/latex/subfigure/subfigure.sty
 Package: subfigure 2002/07/30 v2.1.4 subfigure package
 \subfigtopskip=\skip46
@@ -310,8 +310,8 @@ Package graphics Info: Driver file: dvips.def on input line 80.
 )
 \epsfxsize=\dimen153
 \epsfysize=\dimen154
-) (./report.aux)
-\openout1 = `report.aux'.
+) (./LLVisu.aux)
+\openout1 = `LLVisu.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
 LaTeX Font Info:    ... okay on input line 27.
@@ -374,30 +374,30 @@ Package: nameref 2003/12/03 v2.21 Cross-referencing by name of section
 )
 LaTeX Info: Redefining \ref on input line 27.
 LaTeX Info: Redefining \pageref on input line 27.
- (./report.out) (./report.out)
-\openout5 = `report.out'.
+ (./LLVisu.out) (./LLVisu.out)
+\openout5 = `LLVisu.out'.
 
 File: figures/LLlogo.eps Graphic file (type eps)
 <figures/LLlogo.eps> [1
 
 ] [1]
-Underfull \hbox (badness 10000) in paragraph at lines 71--71
+Underfull \hbox (badness 10000) in paragraph at lines 80--80
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 116--116
+Underfull \hbox (badness 10000) in paragraph at lines 125--125
 
  []
 
-[3] (./report.aux) ) 
+[3] (./LLVisu.aux) ) 
 Here is how much of TeX's memory you used:
- 4319 strings out of 94501
- 58255 string characters out of 1176788
+ 4328 strings out of 94501
+ 58331 string characters out of 1176788
  118583 words of memory out of 1000000
- 7436 multiletter control sequences out of 10000+50000
- 7014 words of font info for 25 fonts, out of 500000 for 2000
+ 7444 multiletter control sequences out of 10000+50000
+ 7360 words of font info for 26 fonts, out of 500000 for 2000
  580 hyphenation exceptions out of 1000
  32i,6n,36p,435b,228s stack positions out of 1500i,500n,5000p,200000b,5000s
 
-Output written on report.dvi (4 pages, 8224 bytes).
+Output written on LLVisu.dvi (4 pages, 11788 bytes).

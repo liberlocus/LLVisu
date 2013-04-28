@@ -7,6 +7,6 @@ Scanning style file /usr/share/texmf/makeindex/nomencl.ist.......
 ** Input style error (file = /usr/share/texmf/makeindex/nomencl.ist, line = 67):
    -- Unknown specifier lethead_flag.
 ...done (10 attributes redefined, 3 ignored).
-Scanning input file report.glo...done (0 entries accepted, 0 rejected).
-Nothing written in report.gls.
-Transcript written in report.ilg.
+Scanning input file LLVisu.glo...done (0 entries accepted, 0 rejected).
+Nothing written in LLVisu.gls.
+Transcript written in LLVisu.ilg.

@@ -58,15 +58,23 @@
 %\section{Introduction}
 
 \section{Introduction}
+\label{sec:intro}
 
-This is a documentation about the LiberLocus LLVisu library.
+This is a documentation about the LiberLocus LLVisu library. LLVisu aims to bring all the scientific data formats under a single library. LLVisu is written in OOP (in C++) in order to facilitate newly emerging data formats very easily through definition of new objects.
+
+So far LLVisu supports only unstructured meshes. But considering the fact that structured meshes are a subset of unstructured meshes, one can get an output for a structured mesh using LLVisu by defining the regular cell connectivities. 
+
+The supported file formats are VTK\cite{VTK} and XDMF\cite{XDMF} (through HDF5\cite{HDF5}). User can generate output data with one or multiple types simultaneously with the appropriate function calls.
+
+The installation procedure is completed with CMake\cite{CMake}. Once installed, by including the appropriate header file in your code, functions can be called for output generation. Detailed explanation of these functions can be found in Section~\ref{sec:API}
+
+%\section{What is new in Version 2.0}
+%\label{sec:whatsnew}
 
 \newpage
 
-%\begingroup
-%    \fontsize{15pt}{10pt}\selectfont
-%    \begin{verbatim}  
-        % how to set font size here to 10 px ?  
+\section{LLVisu API}
+\label{sec:API}
 
 \noindent {\large void {\bf liberVisuVTK}(\newline \par {\it string}  fileName, {\it int}  nodeNum, {\it float}  *pos\_x, {\it float}  *pos\_y, {\it float}  *pos\_z, {\it int}  cellNum, {\it int}  nodePerCell, {\it int}  **cells, {\it char}  **varName, {\it int}  **varSize, {\it float}  **varMatrix \newline) }
 \bigskip
@@ -159,13 +167,16 @@ This is a documentation about the LiberLocus LLVisu library.
         
 
 
-%  \begin{thebibliography}{1}
-%
-%  \bibitem{wiki1} Sorting Algorithm Wikipedia, Page {\em http://en.wikipedia.org/wiki/Sorting\_algorithm}
+  \begin{thebibliography}{1}
+
+  \bibitem{VTK} Visualization Tool Kit, Page {\em http://www.vtk.org/}
+  \bibitem{XDMF} Extensible Data Model Format, Page {\em http://www.xdmf.org}
+  \bibitem{HDF5} Hierarchical Data Format Group, Page {\em http://www.hdfgroup.org/HDF5/}
+  \bibitem{CMake} Cross-platform, open-source build system, Page {\em http://www.cmake.org/}
 %  \bibitem{wiki2} Mergesort Wikipedia Page, {\em http://en.wikipedia.org/wiki/Merge\_sort}
 %  \bibitem{main} Atanas Radenski "{\em Shared Memory, Message Passing, and Hybrid Merge Sorts for Standalone and Clustered SMPs}"  International Conference on Parallel and Distributed Processing Techniques and Applications, 2011 pp. 367-373.
 %  \bibitem{sec} Jaeyoung Park, Kyong-Gun Lee and Jong Tae Kim "{\em Parallel Mergesort Implementation using OpenMP}" Proceedings of The 2011 World Congress in Computer Science, Computer Engineering and Applied Computing. "http://world-comp.org/p2011/PDP8400.pdf"
 %
-%  \end{thebibliography}
+  \end{thebibliography}
 
 \end{document}
