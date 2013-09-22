@@ -4,6 +4,9 @@
 #include "liberVisuVTK.h"
 
 c_VTK::c_VTK(string fileName, int nodeNum, float *x, float *y, float *z, int cellNum, int nodePerCell, int **cellConnectivity, char ** varName, int varSize, float **varMatrix){
+/*!
+Constructor for c_VTK
+*/
 
     _fileName= fileName;
 //  Related to Points

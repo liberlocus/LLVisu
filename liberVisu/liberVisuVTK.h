@@ -62,12 +62,4 @@ public:
 
 };
 
-//void liberVisuVTK(string fileName, int nodeNum, float *x, float *y, float *z, int cellNum, int nodePerCell, int **cellConMatrix, char** varName, int varSize, float **varMatrix){
-//
-//    c_VTK *VTK = new c_VTK(fileName, nodeNum, x, y, z, cellNum, nodePerCell, cellConMatrix, varName, varSize, varMatrix);
-//    VTK->doAll();
-//    delete VTK;
-//
-//}
-
 #endif
